@@ -18,7 +18,6 @@ $font-3: "font-3", serif;
 $color-1: #FD2D01;
 $color-2: #FFD7D7;
 $color-3: #4E5166;
-$color-4: #ffd7d7;
 $black: rgb(40, 40, 40);
 $white: rgb(253, 253, 253);
 $shadow: rgb(219, 218, 218);
@@ -31,10 +30,6 @@ $shadow: rgb(219, 218, 218);
   outline: none;
   border: none;
   text-decoration: none;
-
-  &::selection {
-    background: $color-1;
-  }
 }
 a,
 a:visited {

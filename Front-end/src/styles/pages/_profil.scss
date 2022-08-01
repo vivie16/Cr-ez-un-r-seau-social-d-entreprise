@@ -1,6 +1,6 @@
 .profil-page {
   margin: 80px auto 0;
-  max-width: 1200px;
+  max-width: 1000px;
 
   .icons {
     top: 55px;
@@ -18,7 +18,7 @@
 
   .connection-form {
     border: none;
-    background: $color-4;
+    background: $color-2;
     min-width: 490px;
     width: 90%;
     text-align: center;
@@ -130,7 +130,7 @@
     }
 
     > div {
-      background: $color-4;
+      background: $color-2;
       border-radius: 20px;
       padding: 25px;
       margin: 20px 10px;
@@ -224,7 +224,7 @@
       }
       h5 {
         background: $color-1;
-        color: $color-4;
+        color: $color-2;
         font-family: $font-1;
         margin: 20px 0;
         padding: 12px;
@@ -301,7 +301,7 @@
           width: 2px;
         }
         &::-webkit-scrollbar-track {
-          background: $color-4;
+          background: $color-2;
         }
         &::-webkit-scrollbar-thumb {
           background: $color-1;

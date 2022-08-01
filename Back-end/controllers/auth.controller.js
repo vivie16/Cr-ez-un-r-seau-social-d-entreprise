@@ -10,7 +10,7 @@ const createToken = (id) => {
   })
 };
 
-module.exports.signUp = async (req, res) => {
+exports.signUp = async (req, res) => {
   const {pseudo, email, password} = req.body
 
   try {
@@ -23,7 +23,7 @@ module.exports.signUp = async (req, res) => {
   }
 };
 
-module.exports.signIn = async (req, res) => {
+exports.signIn = async (req, res) => {
   const { email, password } = req.body
 
   try {
@@ -37,7 +37,7 @@ module.exports.signIn = async (req, res) => {
   }
 };
 
-module.exports.logout = (req, res) => {
+exports.logout = (req, res) => {
   res.cookie('jwt', '', { maxAge: 1 });
   res.redirect('/');
 };

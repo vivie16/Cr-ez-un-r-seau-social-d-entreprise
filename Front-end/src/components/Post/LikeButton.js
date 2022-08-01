@@ -27,7 +27,7 @@ const LikeButton = ({ post }) => {
 
   return (
     <div className="like-container">
-      {uid === null && (
+      {uid === null && (// si pas connecter
         <Popup
           trigger={<img src="./img/icons/heart.svg" alt="like" />}
           position={["bottom center", "bottom right", "bottom left"]}
