@@ -21,7 +21,7 @@ const Navbar = () => {
         </div>
         {uid ? (
           <ul>
-            <li className="welcome">
+            <li>
             <NavLink to='/'  >
             <img src="./img/icons/home.svg" alt="home"/>
           </NavLink>

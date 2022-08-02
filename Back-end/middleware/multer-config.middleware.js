@@ -7,9 +7,9 @@ const MIME_TYPES = {
 };
 
 const storage = multer.diskStorage({
-    destination: (req, file, callback) => {
-        if(file.fieldname === "posts") callback(null, "../../public/uploads/post")
-        else if(file.fieldname === "profil") callback(null, "../../public/uploads/profil")
+    destination: (req, file, cb) => {
+        if(file.fieldname === "posts") cb (null, "../Front-end/public/uploads/post")
+        else if(file.fieldname === "profil") cb (null, "./Front-end/public/uploads/profil")
         else console.log("erreur dans la destination")
     },
     filename: (req, file, callback) => {

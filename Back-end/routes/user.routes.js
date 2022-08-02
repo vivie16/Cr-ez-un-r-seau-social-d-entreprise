@@ -2,8 +2,7 @@ const router = require("express").Router();
 const authController = require("../controllers/auth.controller");
 const userController = require("../controllers/user.controller");
 const uploadController = require('../controllers/upload.controller');
-const multer = require("multer");
-const upload = multer();
+const multer = require("../middleware/multer-config.middleware");
 
 // auth
 router.post("/register", authController.signUp);
@@ -18,6 +17,6 @@ router.delete("/:id", userController.deleteUser);
 
 
 // upload
-router.post("/upload", upload.single("file"), uploadController.uploadProfil);
+router.post("/upload", multer.single("profil"), uploadController.uploadProfil);
 
 module.exports = router;
