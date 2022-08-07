@@ -36,7 +36,11 @@ const userSchema = new mongoose.Schema(
     },
     likes: {
       type: [String]
-    }
+    },
+    admin: { 
+      type: Boolean, 
+      default: false,
+    },
   },
   {
     timestamps: true,
@@ -45,7 +49,7 @@ const userSchema = new mongoose.Schema(
 
 //crypte and salt password
 userSchema.pre("save", async function(next) {
-  const salt = await bcrypt.genSalt();
+  const salt = await bcrypt.genSalt(10);
   this.password = await bcrypt.hash(this.password, salt);
   next();
 });

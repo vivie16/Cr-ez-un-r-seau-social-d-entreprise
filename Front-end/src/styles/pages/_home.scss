@@ -1,25 +1,22 @@
 .home {
   max-width: 1000px;
-  grid-template-columns: 60px 1fr 374px;
-  overflow: hidden;
-  margin: 58px auto 50px;
+  margin: 80px auto 50px;
   
-
-  @media screen and(max-width: 990px) {
-    grid-template-columns: 60px 1fr;
-    margin: 58px 20px 50px
-  }
-
-  @media screen and(max-width: 590px) {
-    grid-template-columns: 1fr;
-    margin: 58px 8px 50px;
-  }
-
   .main {
     .home-header {
+      display: flex;
+      justify-content: space-around ; 
+      align-items: center;
       margin: 0 auto 12px;
       text-align: center;
-      
+      max-width: 500px;
+
+      img {
+        @media screen and(max-width: 850px) {
+          display: none;
+        }
+      }
+
       .connection-form {
         background: $color-2;
         border-radius: 20px;
@@ -33,7 +30,7 @@
           li {
             cursor: pointer;
             border-radius: 20px;
-            padding: 12px 14px;
+            padding: 10px 20px;
             transition: .2s;
             margin: 0 8px;
           }
@@ -65,6 +62,9 @@
           input[type=submit] {
             padding: 14px 14px;
             border-radius: 20px;
+          }
+          a {
+            color: rgb(62, 62, 214);
           }
         }
       }

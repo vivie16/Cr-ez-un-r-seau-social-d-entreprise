@@ -15,6 +15,10 @@ const UpdateProfil = () => {
     dispatch(updateBio(userData._id, bio));
     setUpdateForm(false);
   };
+  const deleteProfil = () => {
+    dispatch(updateBio(userData._id,));
+    setUpdateForm(false);
+  };
 
   return (
     <div className="profil-container">
@@ -50,6 +54,7 @@ const UpdateProfil = () => {
             )}
           </div>
           <h4>Membre depuis le : {dateParser(userData.createdAt)}</h4>
+          <button onClick={deleteProfil}>Suprimer le profil</button>
         </div>
       </div>
     </div>

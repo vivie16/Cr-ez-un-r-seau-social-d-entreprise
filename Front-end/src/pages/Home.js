@@ -1,20 +1,30 @@
 import React, { useContext } from "react";
-import { UidContext } from "../components/AppContext";
+import Log from "../components/Log";
 import NewPostForm from "../components/Post/NewPostForm";
 import Thread from "../components/Thread";
-import Log from "../components/Log";
-
+import { UidContext } from "../components/AppContext";
 
 const Home = () => {
-  const uid = useContext(UidContext);
+const uid = useContext(UidContext);
 
   return (
     <div className="home">
       <div className="main">
-        <div className="home-header">
-        {uid ? <NewPostForm /> : <Log signin={true} signup={false} />}
+      {uid ? (
+        <div>
+          <div>
+        <NewPostForm />
         </div>
+        <div> 
         <Thread />
+        </div>
+      </div>
+      ) : (
+        <div className="home-header">
+          <Log signin={false} signup={true} />
+          <img src="./img/icon-left-font.svg" alt="img-log" />
+        </div>
+      )}
       </div>
     </div>
   );

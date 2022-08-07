@@ -42,7 +42,7 @@ nav {
         font-family: $font-3;
       }
       img {
-        height: 30px;
+        height: 0px;
         width: 30px;
       }
     }
@@ -54,18 +54,6 @@ nav {
       width: 35%;
       justify-content: space-between;
       font-size: 1.2rem;
-      
-      .welcome {
-        transform: translateY(2px);
-
-        @media screen and(max-width: 590px) {
-          display: none;
-        }
-        
-        h5 {
-          font-family: $font-3;
-        }
-      }
       
       li {
         

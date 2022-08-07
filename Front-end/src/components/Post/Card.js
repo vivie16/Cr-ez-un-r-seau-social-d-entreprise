@@ -12,7 +12,6 @@ const Card = ({ post }) => {
   const [textUpdate, setTextUpdate] = useState(null);
   const [showComments, setShowComments] = useState(false);
   const usersData = useSelector((state) => state.usersReducer);
-  const userData = useSelector((state) => state.userReducer);
   const dispatch = useDispatch();
 
   const updateItem = () => {
@@ -91,7 +90,7 @@ const Card = ({ post }) => {
                 title={post._id}
               ></iframe>
             )}
-            {userData._id === post.posterId && (
+            {usersData._id === post.posterId && (
               <div className="button-container">
                 <div onClick={() => setIsUpdated(!isUpdated)}>
                   <img src="./img/icons/edit.svg" alt="edit" />
@@ -99,6 +98,22 @@ const Card = ({ post }) => {
                 <DeleteCard id={post._id} />
               </div>
             )}
+            {usersData.admin ?
+              <div className="button-container">
+                  <div onClick={() => setIsUpdated(!isUpdated)}>
+                      <img src="./img/icons/edit.svg" alt="edit" />
+                  </div>
+                  <DeleteCard id={post._id} />
+              </div>
+              :
+              usersData._id === post.posterId && (
+                  <div className="button-container">
+                      <div onClick={() => setIsUpdated(!isUpdated)}>
+                          <img src="./img/icons/edit.svg" alt="edit" />
+                      </div>
+                      <DeleteCard id={post._id} />
+                  </div>
+              )}
             <div className="card-footer">
               <div className="comment-icon">
                 <img
@@ -109,7 +124,6 @@ const Card = ({ post }) => {
                 <span>{post.comments.length}</span>
               </div>
               <LikeButton post={post} />
-              <img src="./img/icons/share.svg" alt="share" />
             </div>
             {showComments && <CardComments post={post} />}
           </div>
