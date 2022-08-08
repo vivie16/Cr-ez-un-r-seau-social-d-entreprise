@@ -50,8 +50,8 @@ const UpdateProfil = () => {
             )}
           </div>
           <h4>Membre depuis le : {dateParser(userData.createdAt)}</h4>
+          </div>
         </div>
-      </div>
     </div>
   );
 };

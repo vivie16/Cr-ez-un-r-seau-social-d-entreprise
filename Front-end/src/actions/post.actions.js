@@ -102,6 +102,7 @@ export const deletePost = (postId) => {
   };
 };
 
+//comments
 export const addComment = (postId, commenterId, text, commenterPseudo) => {
   return (dispatch) => {
     return axios({
