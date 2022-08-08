@@ -58,13 +58,14 @@ nav {
       li {
         
         img {
-          height: 24px;
-          width: 24px;
+          height: 35px;
+          width: 35px;
           cursor: pointer;
           display: grid;
           align-items: center;
           justify-items: center;
           height: 100%;
+          border-radius: 10px;
         }
       }
     }

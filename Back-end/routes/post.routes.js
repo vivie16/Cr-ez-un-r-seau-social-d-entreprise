@@ -1,6 +1,6 @@
 const router = require('express').Router();
 const postController = require('../controllers/post.controller');
-const multer = require('../middleware/multer-config.middleware');
+const multer = require('../middleware/multer-config');
 
 
 router.get('/', postController.readPost);
