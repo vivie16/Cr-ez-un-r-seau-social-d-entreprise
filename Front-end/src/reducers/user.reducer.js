@@ -2,7 +2,6 @@ import {
     GET_USER,
     UPDATE_BIO,
     UPLOAD_PICTURE,
-    DELETE_USER
   } from "../actions/user.actions";
   
   const initialState = {};
@@ -20,11 +19,6 @@ import {
         return {
           ...state,
           bio: action.payload,
-        };
-        case DELETE_USER:
-        return {
-          ...state,
-          bio : action.payload,
         };
       default:
         return state;

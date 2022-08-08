@@ -5,7 +5,6 @@ import LikeButton from "./LikeButton";
 import { updatePost } from "../../actions/post.actions";
 import DeleteCard from "./DeleteCard";
 import CardComments from "./CardComments";
-
 const Card = ({ post }) => {
   const [isLoading, setIsLoading] = useState(true);
   const [isUpdated, setIsUpdated] = useState(false);
@@ -13,18 +12,15 @@ const Card = ({ post }) => {
   const [showComments, setShowComments] = useState(false);
   const usersData = useSelector((state) => state.usersReducer);
   const dispatch = useDispatch();
-
   const updateItem = () => {
     if (textUpdate) {
       dispatch(updatePost(post._id, textUpdate));
     }
     setIsUpdated(false);
   };
-
   useEffect(() => {
     !isEmpty(usersData[0]) && setIsLoading(false);
   }, [usersData]);
-
   return (
     <li className="card-container" key={post._id}>
       {isLoading ? (
@@ -43,7 +39,7 @@ const Card = ({ post }) => {
                   })
                   .join("")
               }
-              alt="Avatar"
+              alt="poster-pic"
             />
           </div>
           <div className="card-right">
@@ -132,5 +128,4 @@ const Card = ({ post }) => {
     </li>
   );
 };
-
 export default Card;
