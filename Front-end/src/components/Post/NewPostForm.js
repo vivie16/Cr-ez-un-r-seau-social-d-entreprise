@@ -5,6 +5,7 @@ import { NavLink } from "react-router-dom";
 import { addPost, getPosts } from "../../actions/post.actions";
 
 const NewPostForm = () => {
+  
   const [isLoading, setIsLoading] = useState(true);
   const [message, setMessage] = useState("");
   const [postPicture, setPostPicture] = useState(null);
@@ -22,13 +23,13 @@ const NewPostForm = () => {
       if (file) data.append("file", file);
       data.append('video', video);
 
-      await dispatch(addPost(data));
+      dispatch(addPost(data));
       dispatch(getPosts());
       cancelPost();
     } else {
       alert("Veuillez entrer un message")
     }
-  };
+  }
  
   const handlePicture = (e) => {
     setPostPicture(URL.createObjectURL(e.target.files[0]));

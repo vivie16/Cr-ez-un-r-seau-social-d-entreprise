@@ -8,7 +8,7 @@ exports.getAllUsers = async (req, res) => {
 };
 
 // one user
-exports.userInfo = (req, res) => {
+exports.getOneUser = (req, res) => {
   if (!ObjectID.isValid(req.params.id))
     return res.status(400).send("ID unknown : " + req.params.id);
 

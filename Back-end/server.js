@@ -1,7 +1,5 @@
 const express = require('express');
-const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
-const helmet = require("helmet");
 
 const userRoutes = require('./routes/user.routes');
 const postRoutes = require('./routes/post.routes');
@@ -15,16 +13,15 @@ const app = express();
 const corsOptions = {
   origin: process.env.CLIENT_URL,
   credentials: true,
-  'allowedHeaders': ['sessionId', 'Content-Type'],
-  'exposedHeaders': ['sessionId'],
-  'methods': 'GET,HEAD,PUT,PATCH,POST,DELETE',
-  'preflightContinue': false
+  allowedHeaders: ['sessionId', 'Content-Type'],
+  exposedHeaders: ['sessionId'],
+  methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
+  preflightContinue: false,
 }
 app.use(cors(corsOptions));
 
-app.use(helmet());
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({extended: true}));
+app.use(express.json());
+app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 
 // jwt

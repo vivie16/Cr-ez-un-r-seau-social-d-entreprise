@@ -13,10 +13,7 @@ const Navbar = () => {
       <div className="nav-container">
         <div className="logo">
           <NavLink  to="/">
-            <div className="logo">
-            <img src="./img/icon-left-font.png" alt="icon" />
-              <h3>Groupomania</h3>
-            </div>
+            <img src="./img/icon-navbar.PNG" alt="icon" />
           </NavLink>
         </div>
         {uid ? (
@@ -36,11 +33,6 @@ const Navbar = () => {
         ) : (
           <ul>
             <li></li>
-            <li>
-              <NavLink to="/profil">
-              <img src="./img/icons/login.svg" alt="login"/>
-              </NavLink>
-            </li>
           </ul>
         )}
       </div>

@@ -2,17 +2,7 @@
   max-width: 1000px;
   grid-template-columns: 60px 1fr 374px;
   overflow: hidden;
-  margin: 80px auto 50px;
-
-  @media screen and(max-width: 990px) {
-    grid-template-columns: 60px 1fr;
-    margin: 58px 20px 50px
-  }
-
-  @media screen and(max-width: 590px) {
-    grid-template-columns: 1fr;
-    margin: 58px 8px 50px;
-  }
+  margin: 100px auto 50px;
   
   .main {
     .home-header {
@@ -55,7 +45,7 @@
           }
           li:not(.active-btn) {
             &:hover {
-              transform: translateX(3px)
+              transform: translateX(0px)
             }
           }
         }

@@ -1,5 +1,5 @@
 .profil-page {
-  margin: 80px auto 0;
+  margin: 100px auto 0;
   max-width: 1000px;
 
   .log-container {
@@ -96,20 +96,6 @@
   h1 {
     text-align: center;
     margin: 10px 0 6px;
-  }
-    img {
-      height: 280px;
-
-      @media screen and(max-width: 1050px) {
-        height: 220px;
-      }
-      @media screen and(max-width: 950px) {
-        height: 200px;
-      }
-      @media screen and(max-width: 885px) {
-        display: none;
-      }
-    }
   }
   .update-container {
     display: grid;
@@ -318,4 +304,4 @@
       }
     }
   }
-
+}

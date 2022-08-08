@@ -8,7 +8,7 @@ const userSchema = new mongoose.Schema(
       type: String,
       required: true,
       minLength: 3,
-      maxLength: 55,
+      maxLength: 50,
       unique: true,
       trim: true
     },
@@ -24,7 +24,6 @@ const userSchema = new mongoose.Schema(
       type: String,
       required: true,
       max: 1024,
-      minlength: 6
     },
     picture: {
       type: String,
@@ -32,7 +31,7 @@ const userSchema = new mongoose.Schema(
     },
     bio :{
       type: String,
-      max: 1024,
+      max: 1000,
     },
     likes: {
       type: [String]
@@ -67,5 +66,4 @@ userSchema.statics.login = async function(email, password) {
 };
 
 const UserModel = mongoose.model("user", userSchema);
-
 module.exports = UserModel;
