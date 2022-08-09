@@ -1,7 +1,6 @@
 const router = require("express").Router();
 const authController = require("../controllers/auth.controller");
 const userController = require("../controllers/user.controller");
-const uploadController = require('../controllers/upload.controller');
 const multer = require("../middleware/multer.midd");
 
 
@@ -17,6 +16,6 @@ router.put("/:id", userController.updateUser);
 router.delete("/:id", userController.deleteUser);
 
 // upload
-router.post("/upload", multer, uploadController.uploadProfil);
+router.post("/upload", multer, userController.uploadProfil);
 
 module.exports = router;

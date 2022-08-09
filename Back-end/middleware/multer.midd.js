@@ -1,22 +1,20 @@
 const multer = require('multer');
 
 const MIME_TYPES = {
-    'image/jpg': 'jpg',
-    'image/jpeg': 'jpg',
-    'image/png': 'png'
-}
-
+  'image/jpg': 'jpg',
+  'image/jpeg': 'jpg',
+  'image/png': 'png'
+};
+// pour savoir ou stocker les images
 const storage = multer.diskStorage({
-    destination: (req, file, callback) => {
-        if(file.fieldname === "posts") callback(null, "../front-end/public/uploads/posts")
-        else if(file.fieldname === "profil") callback(null, "../front-end/public/uploads/profil")
-        else console.log("erreur dans la destination")
-    },
-    filename: (req, file, callback) => {
-        const name = req.body.posterId;
-        const extension = MIME_TYPES[file.mimetype];
-        callback(null, name + Date.now() + '.' + extension);
-    }
+  destination: (req, file, callback) => {
+    callback(null, 'uploads');
+  },
+  filename: (req, file, callback) => {
+    const name = file.originalname.split(' ').join('_');
+    const extension = MIME_TYPES[file.mimetype];
+    callback(null, name + Date.now() + '.' + extension);
+  }
 });
 
-module.exports = multer({ storage: storage }).single("file");
+module.exports = multer({storage: storage}).single('file');

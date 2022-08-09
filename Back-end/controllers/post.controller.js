@@ -18,7 +18,7 @@ exports.createPost = async (req, res, next) => {
     const newPost = new PostModel( {
         posterId: req.body.posterId,
         message: req.body.message,
-        picture: req.file !== undefined ? `http://localhost:${process.env.PORT_FRONT}/uploads/posts/` + req.file.filename : "",
+        picture: req.file !== undefined ? `${req.protocol}://${req.get("host")}/uploads/${ req.file.filename }`:"",
         //video: req.body.video,
         likers: [],
         comments: [],
@@ -64,9 +64,9 @@ exports.deletePost = (req, res, next) => {
             if (!post) {
                 res.status(404).json({error: new Error('Post non trouvé !')});
               }
-            const filename = post.picture.split('/posts/')[1];
+            const filename = post.picture.split('/uploads/')[1];
             
-            fs.unlink(`./client/public/uploads/posts/${filename}`, () => {
+            fs.unlink(`./uploads/${filename}`, () => {
                 PostModel.deleteOne({ _id: req.params.id }) 
                     .then(() => res.status(200).json({ message: 'Post supprimé !'}))
                     .catch(error => res.status(400).json({ error }));
