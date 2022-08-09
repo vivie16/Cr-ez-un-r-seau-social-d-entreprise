@@ -6,7 +6,7 @@ const pipeline = promisify(require("stream").pipeline);
 const filesDestination = `${__dirname}/../../frontend/public/uploads/profil/`;
 
 
-module.exports.uploadProfil = async (req, res) => {
+exports.uploadProfil = async (req, res) => {
   const MIME_TYPES = {
     "image/jpg": "jpg",
     "image/jpeg": "jpg",
@@ -30,7 +30,7 @@ module.exports.uploadProfil = async (req, res) => {
   await pipeline(
     req.file.stream,
     fs.createWriteStream(
-      `${__dirname}/../../frontend/public/uploads/profil/${fileName}`,
+      `${__dirname}/../../front-end/public/uploads/profil/${fileName}`,
     )
   );
   try {
