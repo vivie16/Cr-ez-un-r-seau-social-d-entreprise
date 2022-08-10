@@ -10,12 +10,6 @@ exports.getAllUsers = async (req, res) => {
 };
 
 // one user
-// grâce à auth on va créer req.token qui est en fait l'id
-  // auth va aussi créer req.admin
-  // if(req.token === req.params.id || req.admin === true ) { logique d'administration}
-
-  // if (!ObjectID.isValid(req.params.id))
-  //   return res.status(400).send("ID unknown : " + req.params.id);
 exports.getOneUser = (req, res) => {
   if (!ObjectID.isValid(req.params.id))
     return res.status(400).send("ID unknown : " + req.params.id);
