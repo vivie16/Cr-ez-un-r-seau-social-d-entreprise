@@ -44,7 +44,7 @@ const EditDeleteComment = ({ comment, postId }) => {
           <img src="./img/icons/edit.svg" alt="edit-comment" />
         </span>
       )}
-      {isAuthor && edit && userData.admin === false && (
+      {isAuthor && edit && (
         <form action="" onSubmit={handleEdit} className="edit-comment-form">
           <br />
           <input

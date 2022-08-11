@@ -177,31 +177,24 @@ exports.editCommentPost = (req, res) => {
     }
 };
 
-exports.deleteCommentPost = (req, res , next) => {
+exports.deleteCommentPost = (req, res) => {
     if (!ObjectID.isValid(req.params.id))
-        return res.status(400).json('ID Unknown : ' + req.params.id);
-    
+      return res.status(400).send("ID unknown : " + req.params.id);
+  
     try {
-        return PostModel.findByIdAndUpdate(
-            req.paramas.id,
-            {
-                $pill: {
-                    comments: {
-                        _id: req.body.commentId,
-                    }
-                }
+      return PostModel.findByIdAndUpdate(
+        req.params.id,
+        {
+          $pull: {
+            comments: {
+              _id: req.body.commentId,
             },
-            { new : true },
-            (error, docs) => {
-                if(!error) {
-                    return res.send(docs);
-                } else {
-                    return res.status(400).send(error);
-                }
-            }
-        )
-    }
-    catch(error) {
-        return res.status(400).send(error);
-    }
-}
+          },
+        },
+        { new: true })
+              .then((data) => res.send(data))
+              .catch((err) => res.status(500).send({ message: err }));
+      } catch (err) {
+          return res.status(400).send(err);
+      }
+  };
