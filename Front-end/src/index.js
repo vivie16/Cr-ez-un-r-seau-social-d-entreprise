@@ -8,13 +8,10 @@ import thunk from "redux-thunk";
 import rootReducer from "./reducers";
 import { getUsers } from "./actions/users.actions";
 import { BrowserRouter} from 'react-router-dom';
-// dev tools
-import { composeWithDevTools } from "redux-devtools-extension";
 import { getPosts } from "./actions/post.actions";
 
 const store = legacy_createStore(
-  rootReducer,
-  composeWithDevTools(applyMiddleware(thunk))
+  rootReducer, applyMiddleware(thunk)
 );
 
 store.dispatch(getUsers());
