@@ -3,13 +3,11 @@ const ObjectID = require("mongoose").Types.ObjectId;
 const fs = require("fs");
 const filesDestination = `${__dirname}/../../frontend/client/public/uploads`;
 
-// all users
 exports.getAllUsers = async (req, res) => {
   const users = await UserModel.find().select("-password");
   res.status(200).json(users);
 };
 
-// one user
 exports.getOneUser = (req, res) => {
   if (!ObjectID.isValid(req.params.id))
     return res.status(400).send("ID unknown : " + req.params.id);
@@ -37,7 +35,6 @@ exports.uploadProfil = async (req, res) => {
   }
 };
 
-// update user
 exports.updateUser = async (req, res) => {
   if (!ObjectID.isValid(req.params.id))
     return res.status(400).send("ID unknown : " + req.params.id);
@@ -58,7 +55,6 @@ exports.updateUser = async (req, res) => {
   }
 };
 
-// delete user
 exports.deleteUser = async (req, res) => {
   if (!ObjectID.isValid(req.params.id))
     return res.status(400).send("ID unknown : " + req.params.id);

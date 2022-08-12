@@ -24,6 +24,7 @@ const userSchema = new mongoose.Schema(
       type: String,
       required: true,
       max: 1024,
+      min: 6,
     },
     picture: {
       type: String,
@@ -46,7 +47,6 @@ const userSchema = new mongoose.Schema(
   }
 );
 
-//crypte and salt password
 userSchema.pre("save", async function(next) {
   const salt = await bcrypt.genSalt(10);
   this.password = await bcrypt.hash(this.password, salt);
