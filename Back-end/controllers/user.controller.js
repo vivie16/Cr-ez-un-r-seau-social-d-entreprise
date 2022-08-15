@@ -1,7 +1,7 @@
 const UserModel = require("../models/user.model");
 const ObjectID = require("mongoose").Types.ObjectId;
 const fs = require("fs");
-const filesDestination = `${__dirname}/../../frontend/client/public/uploads`;
+const filesDestination = `${__dirname}/../uploads`;
 
 exports.getAllUsers = async (req, res) => {
   const users = await UserModel.find().select("-password");

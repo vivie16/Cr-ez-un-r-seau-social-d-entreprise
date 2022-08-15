@@ -14,10 +14,11 @@ exports.readPost = (req, res, next) => {
 }
 
 exports.createPost = async (req, res, next) => {
+    const file =`${req.file.filename}`
     const newPost = new PostModel( {
         posterId: req.body.posterId,
         message: req.body.message,
-        picture: req.file !== undefined ? `./uploads/` + req.file.filename : "",
+        picture: req.file !== undefined ? `${req.protocol}://${req.get("host")}/uploads/${file}`:"",
         video: req.body.video,
         likers: [],
         comments: [],

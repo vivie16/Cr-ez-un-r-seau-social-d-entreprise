@@ -1,5 +1,4 @@
 const multer = require('multer');
-const upImg = `${__dirname}/../../Front-end/public/uploads`;
 
 const MIME_TYPES = {
   'image/jpg': 'jpg',
@@ -9,7 +8,7 @@ const MIME_TYPES = {
 // pour savoir ou stocker les images
 const storage = multer.diskStorage({
   destination: (req, file, callback) => {
-    callback(null, upImg);
+    callback(null, "uploads");
   },
   filename: (req, file, callback) => {
     const name = file.originalname.split(' ').join('_');
