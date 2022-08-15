@@ -14,6 +14,8 @@ const Card = ({ post }) => {
   const usersData = useSelector((state) => state.usersReducer);
   const userData = useSelector((state) => state.userReducer);
   const dispatch = useDispatch();
+  const [ setPostPicture] = useState(null);
+  const [setFile] = useState();
 
   const updateItem = () => {
     if (textUpdate) {
@@ -25,7 +27,10 @@ const Card = ({ post }) => {
   useEffect(() => {
     !isEmpty(usersData[0]) && setIsLoading(false);
   }, [usersData]);
-
+  const handlePicture = (e) => {
+    setPostPicture(URL.createObjectURL(e.target.files[0]));
+    setFile(e.target.files[0]);
+  };
   return (
     <li className="card-container" key={post._id}>
       {isLoading ? (
@@ -70,6 +75,16 @@ const Card = ({ post }) => {
                   defaultValue={post.message}
                   onChange={(e) => setTextUpdate(e.target.value)}
                 />
+                <div className="icon">
+                    <img src="./img/icons/picture.svg" alt="img" />
+                    <input
+                      type="file"
+                      id="file-upload"
+                      name="file"
+                      accept=".jpg, .jpeg, .png"
+                      onChange={(e) => handlePicture(e)}
+                    />
+                  </div>
                 <div className="button-container">
                   <button className="btn" onClick={updateItem}>
                     Valider modification
