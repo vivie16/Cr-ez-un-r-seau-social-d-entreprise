@@ -395,6 +395,27 @@
       width: 100% !important;
       height: 80px;
     }
+    .icon {
+      position: relative;
+      cursor: pointer;
+      width: 30px;
+      height: 20px;
+
+      img {
+        position: absolute;
+        height: 34px;
+        width: 34px;
+        
+      }
+      input {
+        position: absolute;
+        cursor: pointer;
+        padding: 10px;
+        width: 34px;
+        opacity: 0;
+        
+      }
+    }
     .button-container {
       text-align: right;
 

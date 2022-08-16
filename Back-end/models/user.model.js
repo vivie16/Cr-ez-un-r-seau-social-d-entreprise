@@ -1,6 +1,7 @@
 const mongoose = require('mongoose');
 const { isEmail } = require('validator');
 const bcrypt = require('bcrypt');
+require('dotenv').config({path: './config/.env'});
 
 const userSchema = new mongoose.Schema(
   {
@@ -28,7 +29,7 @@ const userSchema = new mongoose.Schema(
     },
     picture: {
       type: String,
-      default: "./uploads/random-user.png"
+      default: `http://localhost:${process.env.PORT}/uploads/random-user.png`
     },
     bio :{
       type: String,

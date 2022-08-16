@@ -75,7 +75,7 @@ export const unlikePost = (postId, userId) => {
   };
 };
 
-export const updatePost = (postId, message) => {
+export const updatePost = (postId, message, data) => {
   return (dispatch) => {
     return axios({
       method: "put",
@@ -83,7 +83,7 @@ export const updatePost = (postId, message) => {
       data: { message },
     })
       .then((res) => {
-        dispatch({ type: UPDATE_POST, payload: { message, postId } });
+        dispatch({ type: UPDATE_POST, payload: {data, message, postId } });
       })
       .catch((err) => console.log(err));
   };

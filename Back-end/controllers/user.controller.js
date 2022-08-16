@@ -18,20 +18,25 @@ exports.getOneUser = (req, res) => {
   }).select("-password");
 };
 exports.uploadProfil = async (req, res) => {
-  const fileName = req.body.name + ".jpg";
-  try {
-    if (fs.existsSync(filesDestination)) {
-      fs.unlink(fileName, (err) => {
-        if(err) console.log(err);
-      });}
-      await UserModel.findByIdAndUpdate(
-      req.body.userId,
-      { $set: { picture: req.file !== undefined ? `./uploads/` + req.file.filename : "" } },
-      { new: true, upsert: true, setDefaultsOnInsert: true },
-    );
-    
-  } catch (err) {
-    return res.status(500).send({ message: err });
+  if (req.file) {
+      UserModel.findOne({ _id: req.params.id })
+        .then(user => {
+          const filename = user.picture.split('/uploads/')[1];
+          fs.unlink(`uploads/${filename}`, () => {
+              const UserObject = {
+                  ...JSON.parse(req.body.user),
+                  picture: `${req.protocol}://${req.get("host")}/uploads/${req.file.filename}`,
+                }
+              UserModel.updateOne({ _id: req.params.id }, {...UserObject, _id: req.params.id })
+                  .then(() => res.status(200).json({ message: 'image modifiée!' }))
+          })
+    })
+    .catch(error => res.status(500).json({ error }));
+  } else {
+    const UserObject = {...req.body };
+    UserModel.updateOne({ _id: req.params.id }, {...UserObject, _id: req.params.id })
+        .then(() => res.status(200).json({ message: 'image modifiée!' }))
+        .catch(error => res.status(400).json({ error }));
   }
 };
 

@@ -25,7 +25,7 @@ app.use(cors(corsOptions));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
-app.use(helmet());
+app.use(helmet.crossOriginResourcePolicy({ policy: "same-site" }));
 
 // jwt
 app.get('*', checkUser);

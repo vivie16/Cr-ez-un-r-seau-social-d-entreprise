@@ -43,6 +43,7 @@ import {
             return {
               ...post,
               message: action.payload.message,
+              picture: action.payload.picture
             };
           } else return post;
         });
