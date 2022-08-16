@@ -35,32 +35,34 @@ nav {
       img {
         height: 100%;
         width: 60%;
-        @media screen and(max-width: 500px) {
-          width: 70%;
+        @media screen and (max-width: 800) {
+          width: 68%;
+        }
+        @media screen and (max-width: 500px) {
+          width: 75%;
         }
       }
     }
 
     ul {
       display: flex;
-      align-items: center;
       justify-content: center;
       width: 35%;
       justify-content: space-around ;;
       font-size: 1.2rem;
       
       li {
+        margin: 0 15px;
         
         img {
-          height: 35px;
-          width: 35px;
+          height: 45px;
+          width: 45px;
           cursor: pointer;
           display: grid;
           align-items: center;
           justify-items: center;
-          height: 100%;
           border-radius: 10px;
-
+          object-fit: cover;
         }
       }
     }

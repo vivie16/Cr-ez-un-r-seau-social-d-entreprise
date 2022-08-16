@@ -8,7 +8,7 @@ exports.checkUser = (req, res, next) => {
       if (err) {
         res.locals.user = null;
         res.cookie("jwt", "", { maxAge: 1 });
-        next();
+        res.status(401).json({message: "non connecté"});
       } else {
         let user = await UserModel.findById(decodedToken.id);
         res.locals.user = user;

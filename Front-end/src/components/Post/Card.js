@@ -19,7 +19,10 @@ const Card = ({ post }) => {
   const updateItem = () => {
     if (textUpdate || pictureUpdate) {
       const data = new FormData();
-      dispatch(updatePost(post._id, textUpdate, pictureUpdate, data));
+      console.log(pictureUpdate);
+      data.append('message',textUpdate);
+      data.append('file', pictureUpdate);
+      dispatch(updatePost(post._id, data));
     }
     setIsUpdated(false);
   };
@@ -79,7 +82,7 @@ const Card = ({ post }) => {
                       id="file-upload"
                       name="file"
                       accept=".jpg, .jpeg, .png"
-                      onChange={(e) => setPictureUpdate(e.target.value)}
+                      onChange={(e) => setPictureUpdate(e.target.files[0])}
                     />
                   </>
                   </div>

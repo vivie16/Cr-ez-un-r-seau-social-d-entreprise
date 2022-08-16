@@ -5,7 +5,7 @@ const {checkUser} = require("../middleware/auth.middleware")
 
 router.get('/',checkUser, postController.readPost);
 router.post('/',checkUser, multer, postController.createPost);
-router.put('/:id',checkUser, postController.updatePost);
+router.put('/:id',checkUser, multer, postController.updatePost);
 router.delete('/:id',checkUser, postController.deletePost);
 router.patch('/like-post/:id',checkUser, postController.likePost);
 router.patch('/unlike-post/:id',checkUser, postController.unLikePost);

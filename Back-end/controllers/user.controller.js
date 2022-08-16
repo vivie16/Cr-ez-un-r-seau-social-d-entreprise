@@ -4,7 +4,7 @@ const fs = require("fs");
 const filesDestination = `${__dirname}/../uploads`;
 
 exports.getAllUsers = async (req, res) => {
-  const users = await UserModel.find().select("-password");
+  const users = await UserModel.find().select("-password -email");
   res.status(200).json(users);
 };
 

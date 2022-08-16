@@ -33,18 +33,25 @@ exports.createPost = async (req, res, next) => {
 }
 
 exports.updatePost = (req, res, next) => {
+    console.log(req.file);
+    console.log(req.body.message);
     if (!ObjectID.isValid(req.params.id)) {
         return res.status(400).json('ID Unknown : ' + req.params.id);
     } else {
-        const updatedRecord = {
-            message: req.body.message,
-            picture: `${req.protocol}://${req.get("host")}/uploads/${req.file.filename}`,
-        }
+        const updatedRecord = {};
+        if (req.body.message && req.body.message !== "null") {
+            console.log("message detecter");
+            updatedRecord.message = req.body.message
+        };
+        if (req.file) {
+            updatedRecord.picture = `${req.protocol}://${req.get("host")}/uploads/${req.file.filename}`
+        };
         PostModel.findByIdAndUpdate(
             req.params.id,
             { $set: updatedRecord },
             { new: true },
             (error, docs) => {
+                console.log(docs);
                 if (!error) {
                     res.send(docs);
                 } else {
