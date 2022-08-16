@@ -18,7 +18,8 @@ const Card = ({ post }) => {
 
   const updateItem = () => {
     if (textUpdate || pictureUpdate) {
-      dispatch(updatePost(post._id, textUpdate, pictureUpdate));
+      const data = new FormData();
+      dispatch(updatePost(post._id, textUpdate, pictureUpdate, data));
     }
     setIsUpdated(false);
   };
