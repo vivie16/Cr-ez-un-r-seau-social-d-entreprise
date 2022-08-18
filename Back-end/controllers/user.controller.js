@@ -15,7 +15,7 @@ exports.getOneUser = (req, res) => {
   UserModel.findById(req.params.id, (err, docs) => {
     if (!err) res.send(docs);
     else console.log("ID unknown : " + err);
-  }).select("-password");
+  }).select("-password -email");
 };
 exports.uploadProfil = async (req, res) => {
   try {

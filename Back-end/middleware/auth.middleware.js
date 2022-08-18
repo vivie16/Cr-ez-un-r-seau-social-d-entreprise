@@ -17,7 +17,9 @@ const UserModel = require("../models/user.model");
 // };
 
 exports.checkUser = (req, res, next) => {
+  console.log(req.cookie);
   const token = req.cookies.jwt;
+  console.log("token: ", token);
   if (token) {
     jwt.verify(token, process.env.TOKEN_SECRET, async (err, decodedToken) => {
       if (err) {
@@ -31,8 +33,8 @@ exports.checkUser = (req, res, next) => {
       }
     });
   } else {
+    res.status(401).json({message: "non connecté"});
     res.locals.user = null;
-    next();
   }
 };
 

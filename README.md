@@ -8,7 +8,7 @@ Mettez vos informations de cluster dans /config/db.js
 Créez le fichier .env dans /config/ ajouter les donner suivante :
 - PORT= votre port localhost pour votre Back-end(exemple 5000)
 - PORT_FRONT = votre port localhost pour votre Front-end (exemple 3000)
-- CLIENT_URL=http://localhost:3000 votre URL Front-end
+- FRONT_END_URL=http://localhost:3000 votre URL Front-end
 - DB_USER_PASS= votre identifiant et mot de passe mongoDB
 - TOKEN_SECRET=990bf68e6adf1be5f1671bba3bec692056922454 votre clé secrète aléatoire
 

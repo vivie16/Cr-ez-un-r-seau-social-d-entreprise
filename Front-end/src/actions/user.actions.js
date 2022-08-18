@@ -10,7 +10,11 @@ export const GET_USER_ERRORS = "GET_USER_ERRORS";
 export const getUser = (uid) => {
   return (dispatch) => {
     return axios
-      .get(`${process.env.REACT_APP_API_URL}api/user/${uid}`)
+    ({
+      method: "get",
+      url: (`${process.env.REACT_APP_API_URL}api/user/${uid}`),
+      withCredentials : true,
+    })
       .then((res) => {
         dispatch({ type: GET_USER, payload: res.data });
       })
@@ -21,14 +25,22 @@ export const getUser = (uid) => {
 export const uploadPicture = (data, id) => {
   return (dispatch) => {
     return axios
-      .post(`${process.env.REACT_APP_API_URL}api/user/upload`, data)
+    ({
+      method: "post",
+      url:(`${process.env.REACT_APP_API_URL}api/user/upload`, data),
+      withCredentials : true,
+    })
       .then((res) => {
         if (res.data.errors) {
           dispatch({ type: GET_USER_ERRORS, payload: res.data.errors });
         } else {
           dispatch({ type: GET_USER_ERRORS, payload: "" });
           return axios
-            .get(`${process.env.REACT_APP_API_URL}api/user/${id}`)
+          ({
+            method: "get",
+            url:(`${process.env.REACT_APP_API_URL}api/user/${id}`),
+            withCredentials : true,
+          })
             .then((res) => {
               dispatch({ type: UPLOAD_PICTURE, payload: res.data.picture });
             });
@@ -40,9 +52,10 @@ export const uploadPicture = (data, id) => {
 
 export const updateBio = (userId, bio) => {
   return (dispatch) => {
-    return axios({
+    return axios.request({
       method: "put",
       url: `${process.env.REACT_APP_API_URL}api/user/` + userId,
+      withCredentials : true,
       data: { bio },
     })
       .then((res) => {

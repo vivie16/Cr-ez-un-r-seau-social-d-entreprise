@@ -22,8 +22,11 @@ export const GET_POST_ERRORS = "GET_POST_ERRORS";
 
 export const getPosts = (num) => {
   return (dispatch) => {
-    return axios
-      .get(`${process.env.REACT_APP_API_URL}api/post/`)
+    return axios({
+      method: "get",
+      url: `${process.env.REACT_APP_API_URL}api/post/`,
+      withCredentials : true,
+    })
       .then((res) => {
         const array = res.data.slice(0, num);
         dispatch({ type: GET_POSTS, payload: array });
@@ -35,8 +38,11 @@ export const getPosts = (num) => {
 
 export const addPost = (data) => {
   return (dispatch) => {
-    return axios
-      .post(`${process.env.REACT_APP_API_URL}api/post/`, data)
+    return axios({
+      method: "post",
+      url:(`${process.env.REACT_APP_API_URL}api/post/`, data),
+      withCredentials : true,
+    })
       .then((res) => {
         if (res.data.errors) {
           dispatch({ type: GET_POST_ERRORS, payload: res.data.errors });
@@ -52,6 +58,7 @@ export const likePost = (postId, userId) => {
     return axios({
       method: "patch",
       url: `${process.env.REACT_APP_API_URL}api/post/like-post/` + postId,
+      withCredentials : true,
       data: { id: userId },
     })
       .then((res) => {
@@ -66,6 +73,7 @@ export const unlikePost = (postId, userId) => {
     return axios({
       method: "patch",
       url: `${process.env.REACT_APP_API_URL}api/post/unlike-post/` + postId,
+      withCredentials : true,
       data: { id: userId },
     })
       .then((res) => {
@@ -80,6 +88,7 @@ export const updatePost = (postId, data) => {
     return axios({
       method: "put",
       url: `${process.env.REACT_APP_API_URL}api/post/${postId}`,
+      withCredentials : true,
       data: data,
     })
       .then((res) => {
@@ -95,6 +104,7 @@ export const deletePost = (postId) => {
     return axios({
       method: "delete",
       url: `${process.env.REACT_APP_API_URL}api/post/${postId}`,
+      withCredentials : true,
     })
       .then((res) => {
         dispatch({ type: DELETE_POST, payload: { postId } });
@@ -109,6 +119,7 @@ export const addComment = (postId, commenterId, text, commenterPseudo) => {
     return axios({
       method: "patch",
       url: `${process.env.REACT_APP_API_URL}api/post/comment-post/${postId}`,
+      withCredentials : true,
       data: { commenterId, text, commenterPseudo },
     })
       .then((res) => {
@@ -123,6 +134,7 @@ export const editComment = (postId, commentId, text) => {
     return axios({
       method: "patch",
       url: `${process.env.REACT_APP_API_URL}api/post/edit-comment-post/${postId}`,
+      withCredentials : true,
       data: { commentId, text },
     })
       .then((res) => {
@@ -137,6 +149,7 @@ export const deleteComment = (postId, commentId) => {
     return axios({
       method: "patch",
       url: `${process.env.REACT_APP_API_URL}api/post/delete-comment-post/${postId}`,
+      withCredentials : true,
       data: { commentId },
     })
       .then((res) => {
