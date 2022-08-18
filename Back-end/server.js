@@ -13,7 +13,7 @@ const path = require("path");
 const app = express();
 
 const corsOptions = {
-  origin: process.env.CLIENT_URL,
+  origin: process.env.FRONT_END_URL,
   credentials: true,
   allowedHeaders: ['sessionId', 'Content-Type'],
   exposedHeaders: ['sessionId'],

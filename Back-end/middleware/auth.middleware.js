@@ -1,6 +1,21 @@
 const jwt = require("jsonwebtoken");
 const UserModel = require("../models/user.model");
 
+// exports.auth = (req, res, next) => {
+//   try {
+//     console.log('je suis executer');
+//     console.log(req.headers);
+//     const token = req.headers.authorization.split(' ')[1];
+//     console.log('token:' + token);
+//     req.token = jwt.verify(token, process.env.TOKEN_SECRET);
+//     next();
+//   } catch {
+//     res.status(401).json({
+//       error: new Error("Invalid request!"),
+//     });
+//   }
+// };
+
 exports.checkUser = (req, res, next) => {
   const token = req.cookies.jwt;
   if (token) {

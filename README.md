@@ -12,7 +12,7 @@ Créez le fichier .env dans /config/ ajouter les donner suivante :
 - DB_USER_PASS= votre identifiant et mot de passe mongoDB
 - TOKEN_SECRET=990bf68e6adf1be5f1671bba3bec692056922454 votre clé secrète aléatoire
 
-Créer un dossier uploads pour les images
+Créer un dossier uploads pour les images et ajouter une image nommée random-user.png pour qu'elle soit l'image par défaut des utilisateurs en attendant qu'il ajoute une image de profil
 
 Front-end :
 Créez un fichier .env :
