@@ -56,8 +56,8 @@ export const updateBio = (userId, bio) => {
     return axios.request({
       method: "put",
       url: `${process.env.REACT_APP_API_URL}api/user/` + userId,
-      withCredentials : true,
       data: { bio },
+      withCredentials : true,
     })
       .then((res) => {
         dispatch({ 

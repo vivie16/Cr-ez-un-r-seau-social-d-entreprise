@@ -54,43 +54,13 @@ export const addPost = (data) => {
   };
 };
 
-export const likePost = (postId, userId) => {
-  return (dispatch) => {
-    return axios({
-      method: "patch",
-      url: `${process.env.REACT_APP_API_URL}api/post/like-post/` + postId,
-      withCredentials : true,
-      data: { id: userId },
-    })
-      .then((res) => {
-        dispatch({ type: LIKE_POST, payload: { postId, userId } });
-      })
-      .catch((err) => console.log(err));
-  };
-};
-
-export const unlikePost = (postId, userId) => {
-  return (dispatch) => {
-    return axios({
-      method: "patch",
-      url: `${process.env.REACT_APP_API_URL}api/post/unlike-post/` + postId,
-      withCredentials : true,
-      data: { id: userId },
-    })
-      .then((res) => {
-        dispatch({ type: UNLIKE_POST, payload: { postId, userId } });
-      })
-      .catch((err) => console.log(err));
-  };
-};
-
 export const updatePost = (postId, data) => {
   return (dispatch) => {
     return axios({
       method: "put",
       url: `${process.env.REACT_APP_API_URL}api/post/${postId}`,
-      withCredentials : true,
       data: data,
+      withCredentials : true,
     })
       .then((res) => {
         dispatch({ type: UPDATE_POST, payload: {data, postId } });
@@ -109,6 +79,36 @@ export const deletePost = (postId) => {
     })
       .then((res) => {
         dispatch({ type: DELETE_POST, payload: { postId } });
+      })
+      .catch((err) => console.log(err));
+  };
+};
+
+export const likePost = (postId, userId) => {
+  return (dispatch) => {
+    return axios({
+      method: "patch",
+      url: `${process.env.REACT_APP_API_URL}api/post/like-post/` + postId,
+      data: { id: userId },
+      withCredentials : true,
+    })
+      .then((res) => {
+        dispatch({ type: LIKE_POST, payload: { postId, userId } });
+      })
+      .catch((err) => console.log(err));
+  };
+};
+
+export const unlikePost = (postId, userId) => {
+  return (dispatch) => {
+    return axios({
+      method: "patch",
+      url: `${process.env.REACT_APP_API_URL}api/post/unlike-post/` + postId,
+      data: { id: userId },
+      withCredentials : true,
+    })
+      .then((res) => {
+        dispatch({ type: UNLIKE_POST, payload: { postId, userId } });
       })
       .catch((err) => console.log(err));
   };

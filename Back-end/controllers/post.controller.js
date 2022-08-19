@@ -17,7 +17,7 @@ exports.createPost = async (req, res, next) => {
     const newPost = new PostModel( {
         posterId: req.body.posterId,
         message: req.body.message,
-        picture: `${req.protocol}://${req.get("host")}/uploads/${req.file.filename}`,
+        picture: req.file !== undefined ?  `${req.protocol}://${req.get("host")}/uploads/${req.file.filename}`: "",
         video: req.body.video,
         likers: [],
         comments: [],
@@ -33,14 +33,11 @@ exports.createPost = async (req, res, next) => {
 }
 
 exports.updatePost = (req, res, next) => {
-    console.log(req.file);
-    console.log(req.body.message);
     if (!ObjectID.isValid(req.params.id)) {
         return res.status(400).json('ID Unknown : ' + req.params.id);
     } else {
         const updatedRecord = {};
         if (req.body.message && req.body.message !== "null") {
-            console.log("message detecter");
             updatedRecord.message = req.body.message
         };
         if (req.file) {
@@ -51,7 +48,6 @@ exports.updatePost = (req, res, next) => {
             { $set: updatedRecord },
             { new: true },
             (error, docs) => {
-                console.log(docs);
                 if (!error) {
                     res.send(docs);
                 } else {

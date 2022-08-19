@@ -10,19 +10,21 @@ const Card = ({ post }) => {
   const [isLoading, setIsLoading] = useState(true);
   const [isUpdated, setIsUpdated] = useState(false);
   const [textUpdate, setTextUpdate] = useState(null);
-  const [pictureUpdate, setPictureUpdate] = useState(null);
+  const [file, setFile] = useState();
   const [showComments, setShowComments] = useState(false);
   const usersData = useSelector((state) => state.usersReducer);
   const userData = useSelector((state) => state.userReducer);
   const dispatch = useDispatch();
 
   const updateItem = () => {
-    if (textUpdate || pictureUpdate) {
+    if (textUpdate || file) {
       const data = new FormData();
-      console.log(pictureUpdate);
       data.append('message',textUpdate);
-      data.append('file', pictureUpdate);
+      data.append("file", file);
       dispatch(updatePost(post._id, data));
+      setTimeout(function(){
+        window.location.reload();
+       });
     }
     setIsUpdated(false);
   };
@@ -82,7 +84,7 @@ const Card = ({ post }) => {
                       id="file-upload"
                       name="file"
                       accept=".jpg, .jpeg, .png"
-                      onChange={(e) => setPictureUpdate(e.target.files[0])}
+                      onChange={(e) => setFile(e.target.files[0])}
                     />
                   </>
                   </div>

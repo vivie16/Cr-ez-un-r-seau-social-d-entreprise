@@ -21,6 +21,9 @@ const NewPostForm = () => {
       data.append('message', message);
       if (file) data.append("file", file);
       data.append('video', video);
+      setTimeout(function(){
+        window.location.reload();
+       });
 
       dispatch(addPost(data));
       dispatch(getPosts());

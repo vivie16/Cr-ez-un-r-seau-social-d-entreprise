@@ -14,6 +14,20 @@ import {
     switch (action.type) {
       case GET_POSTS:
         return action.payload;
+      
+      case UPDATE_POST:
+        return state.map((post) => {
+          if (post._id === action.payload.postId) {
+            return {
+              ...post,
+              message: action.payload.message,
+              picture: action.payload.picture
+            };
+          } else return post;
+        });
+
+      case DELETE_POST:
+        return state.filter((post) => post._id !== action.payload.postId);
 
       case LIKE_POST:
         return state.map((post) => {
@@ -36,20 +50,6 @@ import {
           }
           return post;
         });
-
-      case UPDATE_POST:
-        return state.map((post) => {
-          if (post._id === action.payload.postId) {
-            return {
-              ...post,
-              message: action.payload.message,
-              picture: action.payload.picture
-            };
-          } else return post;
-        });
-
-      case DELETE_POST:
-        return state.filter((post) => post._id !== action.payload.postId);
         
       case EDIT_COMMENT:
         return state.map((post) => {
