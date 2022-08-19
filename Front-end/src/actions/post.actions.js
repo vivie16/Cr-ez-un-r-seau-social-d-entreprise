@@ -40,7 +40,8 @@ export const addPost = (data) => {
   return (dispatch) => {
     return axios({
       method: "post",
-      url:(`${process.env.REACT_APP_API_URL}api/post/`, data),
+      url:`${process.env.REACT_APP_API_URL}api/post/`,
+      data: data,
       withCredentials : true,
     })
       .then((res) => {

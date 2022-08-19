@@ -27,7 +27,8 @@ export const uploadPicture = (data, id) => {
     return axios
     ({
       method: "post",
-      url:(`${process.env.REACT_APP_API_URL}api/user/upload`, data),
+      url:`${process.env.REACT_APP_API_URL}api/user/upload`,
+      data: data,
       withCredentials : true,
     })
       .then((res) => {
